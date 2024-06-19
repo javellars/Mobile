@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'cadastro_screen.dart';
 import 'login_screen.dart';
 
-class InicioScreen extends StatefulWidget {
-  const InicioScreen({Key? key}) : super(key: key);
+class InicioScreen extends StatelessWidget {
+  final VoidCallback onNavigateToCadastro;
+  final VoidCallback onNavigateToLogin;
 
-  @override
-  State<InicioScreen> createState() => _InicioScreenState();
-}
+  const InicioScreen({
+    Key? key,
+    required this.onNavigateToCadastro,
+    required this.onNavigateToLogin,
+  }) : super(key: key);
 
-class _InicioScreenState extends State<InicioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,9 +83,7 @@ class _InicioScreenState extends State<InicioScreen> {
                     Column(
                       children: [
                         FloatingActionButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/cadastro');
-                          },
+                          onPressed: onNavigateToCadastro,
                           backgroundColor: Colors.transparent,
                           // Remover cor de fundo
                           elevation: 0,
@@ -107,9 +107,7 @@ class _InicioScreenState extends State<InicioScreen> {
                     Column(
                       children: [
                         FloatingActionButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/login');
-                          },
+                          onPressed: onNavigateToLogin,
                           backgroundColor: Colors.transparent,
                           //tira cor do botão
                           elevation: 0,

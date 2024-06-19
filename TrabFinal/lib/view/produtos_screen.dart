@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:entrega1_livraria/view/carrinho.dart'; // Certifique-se de importar corretamente a tela CarrinhoScreen
 
 class ProdutosScreen extends StatefulWidget {
-  const ProdutosScreen({Key? key}) : super(key: key);
+  final VoidCallback onNavigateToInicio;
+
+  const ProdutosScreen({
+    Key? key,
+    required this.onNavigateToInicio,
+  }) : super(key: key);
 
   @override
   State<ProdutosScreen> createState() => _ProdutosScreenState();
@@ -42,12 +48,10 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
         backgroundColor: Colors.transparent,
         title: Text(""),
         actions: [
-          // Adicione a ação de logout à direita da AppBar
           IconButton(
             icon: Icon(Icons.logout), // Ícone de logout
             onPressed: () {
-              Navigator.pushNamed(
-                  context, '/login'); // Rota para a tela de login
+              widget.onNavigateToInicio(); // Aqui corrigimos para acessar corretamente a função passada como parâmetro
             },
           ),
         ],
