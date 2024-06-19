@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ConfirmacaoPagamentoScreen extends StatefulWidget {
-  const ConfirmacaoPagamentoScreen({Key? key}) : super(key: key);
+  final VoidCallback onNavigateToProdutos;
+
+  const ConfirmacaoPagamentoScreen({
+    Key? key,
+    required this.onNavigateToProdutos,
+  }) : super(key: key);
 
   @override
   State<ConfirmacaoPagamentoScreen> createState() =>
@@ -89,9 +94,7 @@ class _ConfirmacaoPagamentoScreenState
                               foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
                               minimumSize: MaterialStateProperty.all<Size>(Size(200, 50)),
                             ),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/produtos');
-                            },
+                            onPressed: widget.onNavigateToProdutos,
                             child: Text('Prosseguir'),
                           ),
                         ),

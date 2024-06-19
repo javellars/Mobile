@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class PagamentoScreen extends StatefulWidget {
-  const PagamentoScreen({Key? key}) : super(key: key);
+  final VoidCallback onNavigateToConfirma;
+
+  const PagamentoScreen({
+    Key? key,
+    required this.onNavigateToConfirma,
+  }) : super(key: key);
 
   @override
   State<PagamentoScreen> createState() => _PagamentoScreenState();
@@ -18,8 +23,7 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
     '30,00',
   ];
 
-  String?
-      _selectedPayment; // Variável para armazenar a forma de pagamento selecionada
+  String? _selectedPayment; // Variável para armazenar a forma de pagamento selecionada
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +31,11 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(""),
+        title: const Text(""),
       ),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.blueAccent,
@@ -47,11 +51,10 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).padding.top +
-                      kToolbarHeight, // Espaço para a AppBar
+                  height: MediaQuery.of(context).padding.top + kToolbarHeight, // Espaço para a AppBar
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
+                const Padding(
+                  padding: EdgeInsets.symmetric(
                     horizontal: 10.0,
                     vertical: 5.0, // Reduzindo o espaçamento vertical
                   ),
@@ -65,8 +68,8 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                     textAlign: TextAlign.start,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
+                const Padding(
+                  padding: EdgeInsets.symmetric(
                     horizontal: 130.0,
                   ),
                   child: Text(
@@ -79,25 +82,24 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white54,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 1,
                       mainAxisSpacing: 5, // Espaçamento entre os elementos
                       crossAxisSpacing: 1, // Espaçamento entre os elementos
                     ),
                     shrinkWrap: true,
-                    physics:
-                        NeverScrollableScrollPhysics(), // Impede que a GridView role
+                    physics: const NeverScrollableScrollPhysics(), // Impede que a GridView role
                     itemCount: imageUrls.length,
                     itemBuilder: (context, index) {
                       return Row(
                         children: [
-                          //aqui são as imagens dos prodsss
+                          // Aqui são as imagens dos produtos
                           Container(
                             height: 190,
                             width: 190,
@@ -114,7 +116,7 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                               padding: const EdgeInsets.only(left: 10.0),
                               child: Text(
                                 genreDescriptions[index],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -127,8 +129,8 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     "Selecione a forma de pagamento:",
                     style: TextStyle(
@@ -141,14 +143,13 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
-                      vertical: 5.0), // Espaçamento vertical reduzido
+                      horizontal: 10.0, vertical: 5.0), // Espaçamento vertical reduzido
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RadioListTile<String>(
                         title: Row(
-                          children: [
+                          children: const [
                             Icon(Icons.payment),
                             SizedBox(width: 8),
                             Text("Pix"),
@@ -164,7 +165,7 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                       ),
                       RadioListTile<String>(
                         title: Row(
-                          children: [
+                          children: const [
                             Icon(Icons.credit_card),
                             SizedBox(width: 8),
                             Text("Crédito"),
@@ -181,19 +182,16 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20), // Adicionei a vírgula que faltava aqui
+                const SizedBox(height: 20), // Adicionei a vírgula que faltava aqui
                 Center(
-                  child:ElevatedButton(
-  onPressed: () {
-    Navigator.pushNamed(context, '/confPagamento');
-  },
-  style: ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(Colors.orangeAccent),
-    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-  ),
-  child: Text('Confirmar'),
-),
-
+                  child: ElevatedButton(
+                    onPressed: widget.onNavigateToConfirma,
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.orangeAccent),
+                      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                    ),
+                    child: const Text('Confirmar'),
+                  ),
                 ),
               ],
             ),

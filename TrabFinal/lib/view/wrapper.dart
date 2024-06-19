@@ -5,6 +5,7 @@ import 'package:entrega1_livraria/view/pagamento_screen.dart';
 import 'package:entrega1_livraria/view/carrinho.dart';
 import 'package:entrega1_livraria/view/cadastro_screen.dart';
 import 'package:entrega1_livraria/view/login_screen.dart';
+import 'package:entrega1_livraria/view/conf_pagamento_screen.dart';
 
 void main() {
   runApp(const Wrapper());
@@ -47,55 +48,38 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _currentIndex != 0
-          ? AppBar(
-              title: const Text('Bottom Navigation Demo'),
-            )
-          : null,
       body: IndexedStack(
         index: _currentIndex,
         children: [
           InicioScreen(
-            onNavigateToCadastro: () {
-              setState(() {
-                _currentIndex = 4; // Navigate to CadastroScreen
-              });
-            },
-            onNavigateToLogin: () {
-              setState(() {
-                _currentIndex = 5; // Navigate to LoginScreen
-              });
-            },
+            onNavigateToCadastro: () => navigateTo(4),
+            onNavigateToLogin: () => navigateTo(5),
           ),
           ProdutosScreen(
             onNavigateToInicio: () => navigateTo(0),
           ),
-          PagamentoScreen(),
-          CarrinhoScreen(),
+          PagamentoScreen(
+            onNavigateToConfirma: () => navigateTo(6),
+          ),
+          CarrinhoScreen(
+            onNavigateToProdutos: () => navigateTo(1),
+            onNavigateToPagamento: () => navigateTo(2),
+          ),
           CadastroScreen(
-            onNavigateToLogin: () {
-              setState(() {
-                _currentIndex = 5; // Navigate to LoginScreen
-              });
-            },
+            onNavigateToLogin: () => navigateTo(5),
           ),
           LoginScreen(
-             onNavigateToProdutos: () {
-              setState(() {
-                _currentIndex = 1; // Navigate to ProdutosScreen
-              });
-            },
+            onNavigateToProdutos: () => navigateTo(1),
+          ),
+          ConfirmacaoPagamentoScreen(
+            onNavigateToProdutos: () => navigateTo(1),
           ),
         ],
       ),
-      bottomNavigationBar: _currentIndex != 0 && _currentIndex != 4 && _currentIndex != 5
+      bottomNavigationBar: _currentIndex != 0 && _currentIndex != 4 && _currentIndex != 5 && _currentIndex != 6
           ? BottomNavigationBar(
               currentIndex: _currentIndex - 1,
-              onTap: (index) {
-                setState(() {
-                  _currentIndex = index + 1;
-                });
-              },
+              onTap: (index) => navigateTo(index + 1),
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.storefront),
