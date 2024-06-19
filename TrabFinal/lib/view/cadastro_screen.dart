@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:entrega1_livraria/view/wrapper.dart';
 import '../bloc/profiler_bloc.dart';
 import '../model/cadastro.dart';
 
 class CadastroScreen extends StatefulWidget {
-  const CadastroScreen({Key? key}) : super(key: key);
+  final VoidCallback onNavigateToLogin;
+
+  const CadastroScreen({
+    Key? key,
+    required this.onNavigateToLogin,
+  }) : super(key: key);
 
   @override
   State<CadastroScreen> createState() => _CadastroScreenState();
@@ -32,10 +36,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(""),
+        title: const Text(""),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Colors.blue,
@@ -64,7 +68,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
                         decoration: BoxDecoration(
                           color: Colors.orangeAccent,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 25.0,
@@ -83,9 +87,9 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                 TextFormField(
                                   controller: _nomeController,
                                   keyboardType: TextInputType.text,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 20),
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: "Adicione seu nome",
                                     labelStyle:
                                         TextStyle(color: Colors.blueAccent),
@@ -100,13 +104,13 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                     return null;
                                   },
                                 ),
-                                Divider(),
+                                const Divider(),
                                 TextFormField(
                                   controller: _emailController,
-                                  keyboardType: TextInputType.text,
-                                  style: TextStyle(
+                                  keyboardType: TextInputType.emailAddress,
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 20),
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: "Adicione seu e-mail",
                                     labelStyle:
                                         TextStyle(color: Colors.blueAccent),
@@ -122,13 +126,14 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                     return null;
                                   },
                                 ),
+                                const Divider(),
                                 TextFormField(
                                   controller: _senhaController,
                                   obscureText: true,
-                                  keyboardType: TextInputType.number,
-                                  style: TextStyle(
+                                  keyboardType: TextInputType.text,
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 20),
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: "Senha do usuário",
                                     labelStyle:
                                         TextStyle(color: Colors.blueAccent),
@@ -143,10 +148,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                     return null;
                                   },
                                 ),
-                                Divider(),
+                                const Divider(),
                                 ElevatedButton(
                                   onPressed: buttonCadastroClicado,
-                                  child: Text(
+                                  child: const Text(
                                     "Cadastrar",
                                     style: TextStyle(color: Colors.white),
                                   ),
@@ -177,7 +182,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white60,
                           borderRadius: BorderRadius.circular(80),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 25.0,
@@ -188,7 +193,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
                         child: Image(
                           height: MediaQuery.of(context).size.height / 5,
                           width: MediaQuery.of(context).size.height / 5,
-                          image: AssetImage('lib/assets/perfil_icon.png'),
+                          image: const AssetImage('lib/assets/perfil_icon.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -203,7 +208,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
     );
   }
 
-  buttonCadastroClicado() {
+  void buttonCadastroClicado() {
     if (_formKey.currentState!.validate()) {
       Cad nome = Cad.withData(
         nome: _nomeController.text,
@@ -217,16 +222,15 @@ class _CadastroScreenState extends State<CadastroScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Sucesso"),
-            content: Text("Cadastro efetuado com sucesso"),
+            title: const Text("Sucesso"),
+            content: const Text("Cadastro efetuado com sucesso"),
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop(); // Fecha o dialog
-                  Navigator.pushNamed(
-                      context, '/login'); // Vai para a tela de login
+                  Navigator.of(context).pop();  // Fecha o diálogo
+                  widget.onNavigateToLogin();  // Navega para a tela de login
                 },
-                child: Text("OK"),
+                child: const Text("OK"),
               ),
             ],
           );

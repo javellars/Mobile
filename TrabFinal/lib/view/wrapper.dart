@@ -23,13 +23,7 @@ class Wrapper extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => MyHomePage(),
-        '/cadastro': (context) => CadastroScreen(),
-        '/login': (context) => LoginScreen(),
-        '/carrinho': (context) => CarrinhoScreen(),
-      },
+      home: const MyHomePage(),
     );
   }
 }
@@ -63,10 +57,23 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           InicioScreen(
             onNavigateToCadastro: () {
-              Navigator.pushNamed(context, '/cadastro');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CadastroScreen(
+                  onNavigateToLogin: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
+                  },
+                )),
+              );
             },
             onNavigateToLogin: () {
-              Navigator.pushNamed(context, '/login');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+              );
             },
           ),
           ProdutosScreen(
@@ -74,8 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           PagamentoScreen(),
           CarrinhoScreen(),
-          CadastroScreen(),
-          LoginScreen(),
         ],
       ),
       bottomNavigationBar: _currentIndex != 0
