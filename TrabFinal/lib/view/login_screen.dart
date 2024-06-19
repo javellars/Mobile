@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  final VoidCallback onNavigateToProdutos;
+
+  const LoginScreen({
+    Key? key,
+    required this.onNavigateToProdutos,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,14 +89,12 @@ class LoginScreen extends StatelessWidget {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return AlertDialog(
-                                        title:
-                                            Text('Login efetuado com sucesso'),
+                                        title: Text('Login efetuado com sucesso'),
                                         actions: <Widget>[
                                           TextButton(
                                             onPressed: () {
-                                              Navigator.of(context).pop();
-                                              Navigator.pushNamed(
-                                                  context, '/main');
+                                              Navigator.pop(context); // Fechar o dialog
+                                              onNavigateToProdutos(); // Navegar para ProdutosScreen
                                             },
                                             child: Text('OK'),
                                           ),

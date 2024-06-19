@@ -57,23 +57,14 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           InicioScreen(
             onNavigateToCadastro: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CadastroScreen(
-                  onNavigateToLogin: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
-                    );
-                  },
-                )),
-              );
+              setState(() {
+                _currentIndex = 4; // Navigate to CadastroScreen
+              });
             },
             onNavigateToLogin: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
-              );
+              setState(() {
+                _currentIndex = 5; // Navigate to LoginScreen
+              });
             },
           ),
           ProdutosScreen(
@@ -81,9 +72,23 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           PagamentoScreen(),
           CarrinhoScreen(),
+          CadastroScreen(
+            onNavigateToLogin: () {
+              setState(() {
+                _currentIndex = 5; // Navigate to LoginScreen
+              });
+            },
+          ),
+          LoginScreen(
+             onNavigateToProdutos: () {
+              setState(() {
+                _currentIndex = 1; // Navigate to ProdutosScreen
+              });
+            },
+          ),
         ],
       ),
-      bottomNavigationBar: _currentIndex != 0
+      bottomNavigationBar: _currentIndex != 0 && _currentIndex != 4 && _currentIndex != 5
           ? BottomNavigationBar(
               currentIndex: _currentIndex - 1,
               onTap: (index) {
