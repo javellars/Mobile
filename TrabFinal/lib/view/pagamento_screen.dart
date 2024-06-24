@@ -1,11 +1,11 @@
+import 'package:entrega1_livraria/view/conf_pagamento_screen.dart';
 import 'package:flutter/material.dart';
 
 class PagamentoScreen extends StatefulWidget {
-  final VoidCallback onNavigateToConfirma;
-
+ 
   const PagamentoScreen({
     Key? key,
-    required this.onNavigateToConfirma,
+   
   }) : super(key: key);
 
   @override
@@ -185,7 +185,13 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                 const SizedBox(height: 20), // Adicionei a vírgula que faltava aqui
                 Center(
                   child: ElevatedButton(
-                    onPressed: widget.onNavigateToConfirma,
+                    onPressed:(){
+                       Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ConfirmacaoPagamentoScreen()
+                            ),
+                          );
+                    } ,
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.orangeAccent),
                       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),

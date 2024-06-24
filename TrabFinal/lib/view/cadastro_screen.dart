@@ -1,3 +1,4 @@
+import 'package:entrega1_livraria/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:entrega1_livraria/view/wrapper.dart';
@@ -5,11 +6,9 @@ import '../bloc/profiler_bloc.dart';
 import '../model/cadastro.dart';
 
 class CadastroScreen extends StatefulWidget {
-  final VoidCallback onNavigateToLogin;
-
+  
   const CadastroScreen({
     Key? key,
-    required this.onNavigateToLogin,
   }) : super(key: key);
 
   @override
@@ -227,8 +226,14 @@ class _CadastroScreenState extends State<CadastroScreen> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop();  // Fecha o diálogo
-                  widget.onNavigateToLogin();  // Navega para a tela de login
+                  /*Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => LoginScreen()),
+                          ); */
+                          /*Navigator.pop(context);
+                          Navigator.pop(context); // Navega para a tela de login*/
+                  
+
                 },
                 child: const Text("OK"),
               ),

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:entrega1_livraria/view/inicio_screen.dart';
 import 'package:entrega1_livraria/view/produtos_screen.dart';
 import 'package:entrega1_livraria/view/pagamento_screen.dart';
@@ -7,19 +7,14 @@ import 'package:entrega1_livraria/view/cadastro_screen.dart';
 import 'package:entrega1_livraria/view/login_screen.dart';
 import 'package:entrega1_livraria/view/conf_pagamento_screen.dart';
 
-void main() {
-  runApp(const Wrapper());
-}
 
 class Wrapper extends StatelessWidget {
   const Wrapper({Key? key}) : super(key: key);
 
-  static const String _title = 'Bottom Navigation Demo';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -57,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           ProdutosScreen(
             onNavigateToInicio: () => navigateTo(0),
+            onNavigateToCarrinho: () => navigateTo(3),
           ),
           PagamentoScreen(
             onNavigateToConfirma: () => navigateTo(6),
@@ -96,6 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             )
           : null,
+
+          
     );
   }
 }
+*/

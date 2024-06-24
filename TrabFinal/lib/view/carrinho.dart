@@ -1,13 +1,11 @@
+import 'package:entrega1_livraria/view/pagamento_screen.dart';
+import 'package:entrega1_livraria/view/produtos_screen.dart';
 import 'package:flutter/material.dart';
 
 class CarrinhoScreen extends StatefulWidget {
-  final VoidCallback onNavigateToProdutos;
-  final VoidCallback onNavigateToPagamento;
-
+  
   const CarrinhoScreen({
     Key? key,
-    required this.onNavigateToProdutos,
-    required this.onNavigateToPagamento,
   }) : super(key: key);
 
   @override
@@ -99,7 +97,12 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                                 minimumSize: MaterialStateProperty.all<Size>(buttonSize),
                                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(buttonPadding),
                               ),
-                              onPressed: widget.onNavigateToProdutos,
+                              onPressed:(){
+                                 Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ProdutosScreen()),
+                          );
+                              },
                               child: const Text('Continuar Comprando'),
                             ),
                             ElevatedButton(
@@ -109,7 +112,12 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                                 minimumSize: MaterialStateProperty.all<Size>(buttonSize),
                                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(buttonPadding),
                               ),
-                              onPressed: widget.onNavigateToPagamento,
+                              onPressed:(){
+                                 Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => PagamentoScreen()),
+                          );
+                              },
                               child: const Text('Finalizar Compra'),
                             ),
                           ],

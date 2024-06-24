@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:entrega1_livraria/view/carrinho.dart'; // Certifique-se de importar corretamente a tela CarrinhoScreen
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:entrega1_livraria/bloc/auth_bloc.dart';
+import 'package:entrega1_livraria/view/carrinho.dart';
 
 class ProdutosScreen extends StatefulWidget {
-  final VoidCallback onNavigateToInicio;
-
-  const ProdutosScreen({
-    Key? key,
-    required this.onNavigateToInicio,
-  }) : super(key: key);
+  const ProdutosScreen({Key? key}) : super(key: key);
 
   @override
   State<ProdutosScreen> createState() => _ProdutosScreenState();
@@ -49,9 +46,9 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
         title: Text(""),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout), // Ícone de logout
+            icon: Icon(Icons.logout),
             onPressed: () {
-              widget.onNavigateToInicio(); // Aqui corrigimos para acessar corretamente a função passada como parâmetro
+              BlocProvider.of<AuthBloc>(context).add(Logout());
             },
           ),
         ],
@@ -157,7 +154,10 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                       SizedBox(height: 5),
                       ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/carrinho');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CarrinhoScreen()),
+                          );
                         },
                         icon: Icon(Icons.shopping_cart),
                         label: Text('R\$ ${productValues[index]}'),

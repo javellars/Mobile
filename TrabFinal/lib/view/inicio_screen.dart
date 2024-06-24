@@ -3,13 +3,10 @@ import 'cadastro_screen.dart';
 import 'login_screen.dart';
 
 class InicioScreen extends StatelessWidget {
-  final VoidCallback onNavigateToCadastro;
-  final VoidCallback onNavigateToLogin;
 
   const InicioScreen({
     Key? key,
-    required this.onNavigateToCadastro,
-    required this.onNavigateToLogin,
+
   }) : super(key: key);
 
   @override
@@ -83,7 +80,12 @@ class InicioScreen extends StatelessWidget {
                     Column(
                       children: [
                         FloatingActionButton(
-                          onPressed: onNavigateToCadastro,
+                          onPressed:(){
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CadastroScreen()),
+                          );
+                          },
                           backgroundColor: Colors.transparent,
                           // Remover cor de fundo
                           elevation: 0,
@@ -107,7 +109,12 @@ class InicioScreen extends StatelessWidget {
                     Column(
                       children: [
                         FloatingActionButton(
-                          onPressed: onNavigateToLogin,
+                          onPressed: (){
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => LoginScreen()),
+                          );
+                          },
                           backgroundColor: Colors.transparent,
                           //tira cor do botão
                           elevation: 0,

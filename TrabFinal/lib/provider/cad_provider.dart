@@ -11,6 +11,8 @@ class CadProvider {
   String prefixUrl = "https://bookshop-cae03-default-rtdb.firebaseio.com/";
   String suffixUrl = ".json";
 
+  String uid = "default";
+
   Future<Cad> getCad(cadId) async {
     Response response = await _dio.get(prefixUrl + cadId + "/" + suffixUrl);
     return Cad.fromMap(response.data);

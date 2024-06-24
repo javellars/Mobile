@@ -1,11 +1,11 @@
+import 'package:entrega1_livraria/view/produtos_screen.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmacaoPagamentoScreen extends StatefulWidget {
-  final VoidCallback onNavigateToProdutos;
-
+ 
   const ConfirmacaoPagamentoScreen({
     Key? key,
-    required this.onNavigateToProdutos,
+    
   }) : super(key: key);
 
   @override
@@ -94,7 +94,12 @@ class _ConfirmacaoPagamentoScreenState
                               foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
                               minimumSize: MaterialStateProperty.all<Size>(Size(200, 50)),
                             ),
-                            onPressed: widget.onNavigateToProdutos,
+                            onPressed:(){
+                               Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ProdutosScreen()),
+                          );
+                            } ,
                             child: Text('Prosseguir'),
                           ),
                         ),
