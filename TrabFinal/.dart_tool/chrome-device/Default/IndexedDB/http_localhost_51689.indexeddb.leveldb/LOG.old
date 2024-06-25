@@ -1,0 +1,33 @@
+2024/06/25-17:44:52.964 2048 Reusing MANIFEST C:\Users\Dell\AppData\Local\Temp\flutter_tools.8de812f0\flutter_tools_chrome_device.47bd7047\Default\IndexedDB\http_localhost_51689.indexeddb.leveldb/MANIFEST-000001
+2024/06/25-17:44:52.965 2048 Recovering log #19
+2024/06/25-17:44:52.966 2048 Reusing old log C:\Users\Dell\AppData\Local\Temp\flutter_tools.8de812f0\flutter_tools_chrome_device.47bd7047\Default\IndexedDB\http_localhost_51689.indexeddb.leveldb/000019.log 
+2024/06/25-17:44:52.977 18a4 Level-0 table #23: started
+2024/06/25-17:44:52.986 18a4 Level-0 table #23: 3277 bytes OK
+2024/06/25-17:44:52.991 18a4 Delete type=0 #19
+2024/06/25-17:44:52.992 60c Manual compaction at level-0 from '\x00\x08\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x09\x00\x00\x00' @ 0 : 0; will stop at '\x00\x08\x00\x00\x05' @ 336 : 1
+2024/06/25-17:44:52.992 60c Compacting 1@0 + 1@1 files
+2024/06/25-17:44:52.998 60c Generated table #24@0: 20 keys, 2542 bytes
+2024/06/25-17:44:52.998 60c Compacted 1@0 + 1@1 files => 2542 bytes
+2024/06/25-17:44:53.001 60c compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/06/25-17:44:53.001 60c Delete type=2 #23
+2024/06/25-17:44:53.001 60c Manual compaction at level-0 from '\x00\x08\x00\x00\x05' @ 336 : 1 .. '\x00\x09\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/06/25-17:57:43.155 2048 Level-0 table #26: started
+2024/06/25-17:57:43.161 2048 Level-0 table #26: 2782 bytes OK
+2024/06/25-17:57:43.165 2048 Delete type=2 #20
+2024/06/25-17:57:43.165 2048 Delete type=0 #22
+2024/06/25-17:57:43.166 2048 Manual compaction at level-0 from (begin) .. (end); will stop at '\x00\x02\x01\x02\x01C\x00f\x00i\x00r\x00e\x00b\x00a\x00s\x00e\x00:\x00a\x00u\x00t\x00h\x00U\x00s\x00e\x00r\x00:\x00A\x00I\x00z\x00a\x00S\x00y\x00C\x00q\x00y\x00S\x00I\x00w\x00O\x00t\x00G\x00F\x00N\x00K\x00P\x00J\x00t\x00c\x00W\x00a\x00j\x00_\x00_\x00i\x00r\x00z\x006\x00S\x00r\x00D\x004\x00T\x00x\x00l\x00M\x00:\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]' @ 371 : 1
+2024/06/25-17:57:43.166 2048 Compacting 1@0 + 1@1 files
+2024/06/25-17:57:43.173 2048 Generated table #27@0: 21 keys, 2501 bytes
+2024/06/25-17:57:43.173 2048 Compacted 1@0 + 1@1 files => 2501 bytes
+2024/06/25-17:57:43.175 2048 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/06/25-17:57:43.176 2048 Delete type=2 #24
+2024/06/25-17:57:43.176 2048 Delete type=2 #26
+2024/06/25-17:57:43.177 2048 Manual compaction at level-0 from '\x00\x02\x01\x02\x01C\x00f\x00i\x00r\x00e\x00b\x00a\x00s\x00e\x00:\x00a\x00u\x00t\x00h\x00U\x00s\x00e\x00r\x00:\x00A\x00I\x00z\x00a\x00S\x00y\x00C\x00q\x00y\x00S\x00I\x00w\x00O\x00t\x00G\x00F\x00N\x00K\x00P\x00J\x00t\x00c\x00W\x00a\x00j\x00_\x00_\x00i\x00r\x00z\x006\x00S\x00r\x00D\x004\x00T\x00x\x00l\x00M\x00:\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]' @ 371 : 1 .. (end); will stop at (end)
+2024/06/25-17:57:43.177 2048 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x02\x01\x02\x01C\x00f\x00i\x00r\x00e\x00b\x00a\x00s\x00e\x00:\x00a\x00u\x00t\x00h\x00U\x00s\x00e\x00r\x00:\x00A\x00I\x00z\x00a\x00S\x00y\x00C\x00q\x00y\x00S\x00I\x00w\x00O\x00t\x00G\x00F\x00N\x00K\x00P\x00J\x00t\x00c\x00W\x00a\x00j\x00_\x00_\x00i\x00r\x00z\x006\x00S\x00r\x00D\x004\x00T\x00x\x00l\x00M\x00:\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]' @ 371 : 1
+2024/06/25-17:57:43.177 2048 Compacting 1@1 + 1@2 files
+2024/06/25-17:57:43.184 2048 Generated table #28@1: 35 keys, 2780 bytes
+2024/06/25-17:57:43.184 2048 Compacted 1@1 + 1@2 files => 2780 bytes
+2024/06/25-17:57:43.187 2048 compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/06/25-17:57:43.187 2048 Delete type=2 #17
+2024/06/25-17:57:43.187 2048 Delete type=2 #27
+2024/06/25-17:57:43.188 2048 Manual compaction at level-1 from '\x00\x02\x01\x02\x01C\x00f\x00i\x00r\x00e\x00b\x00a\x00s\x00e\x00:\x00a\x00u\x00t\x00h\x00U\x00s\x00e\x00r\x00:\x00A\x00I\x00z\x00a\x00S\x00y\x00C\x00q\x00y\x00S\x00I\x00w\x00O\x00t\x00G\x00F\x00N\x00K\x00P\x00J\x00t\x00c\x00W\x00a\x00j\x00_\x00_\x00i\x00r\x00z\x006\x00S\x00r\x00D\x004\x00T\x00x\x00l\x00M\x00:\x00[\x00D\x00E\x00F\x00A\x00U\x00L\x00T\x00]' @ 371 : 1 .. (end); will stop at (end)
