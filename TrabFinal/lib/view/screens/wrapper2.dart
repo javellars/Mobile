@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 
-class Wrapper extends StatefulWidget {
-  const Wrapper({Key? key}) : super(key: key);
+class Wrapper2 extends StatefulWidget {
+  const Wrapper2({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -15,7 +15,7 @@ class Wrapper extends StatefulWidget {
   }
 }
 
-class WrapperState extends State<Wrapper> {
+class WrapperState extends State<Wrapper2> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
