@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:entrega1_livraria/bloc/auth_bloc.dart';
-import 'package:entrega1_livraria/view/wrapper.dart';
 import 'package:entrega1_livraria/view/wrapper2.dart';
-import 'package:entrega1_livraria/view/inicio_screen.dart';
 import 'package:entrega1_livraria/bloc/profiler_bloc.dart';
 
 void main() async {
@@ -12,7 +10,7 @@ void main() async {
   
   try {
     await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
         apiKey: "AIzaSyCqySIwOtGFNKPJtcWaj__irz6SrD4TxlM",
         authDomain: "bookshop-cae03.firebaseapp.com",
         databaseURL: "https://bookshop-cae03-default-rtdb.firebaseio.com",
@@ -23,7 +21,7 @@ void main() async {
       ),
     );
   } catch (e) {
-    print('Erro ao inicializar o Firebase: $e');
+    debugPrint('Erro ao inicializar o Firebase: $e');
     // Aqui você pode lidar com o erro, por exemplo, mostrar uma mensagem ao usuário
   }
 
@@ -51,7 +49,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.green,
         ),
-        home:  Wrapper2(),
+        home:  const Wrapper2(),
         ), // Utiliza o Wrapper como tela inicial
       ),
     );
