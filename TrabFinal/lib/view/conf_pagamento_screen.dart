@@ -21,11 +21,11 @@ class _ConfirmacaoPagamentoScreenState
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(""),
+        title: const Text(""),
       ),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
                 Colors.blueAccent,
@@ -60,8 +60,8 @@ class _ConfirmacaoPagamentoScreenState
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
+                        const Padding(
+                          padding: EdgeInsets.symmetric(
                             vertical: 20,
                             horizontal: 50,
                           ),
@@ -74,8 +74,8 @@ class _ConfirmacaoPagamentoScreenState
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
+                        const Padding(
+                          padding: EdgeInsets.symmetric(
                             vertical: 40,
                             horizontal: 20,
                           ),
@@ -86,21 +86,21 @@ class _ConfirmacaoPagamentoScreenState
                           ),
                         ),
                         // Botão "Prosseguir"
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Center(
                           child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(Colors.orangeAccent),
                               foregroundColor: MaterialStateProperty.all<Color>(Colors.blueAccent),
-                              minimumSize: MaterialStateProperty.all<Size>(Size(200, 50)),
+                              minimumSize: MaterialStateProperty.all<Size>(const Size(200, 50)),
                             ),
                             onPressed:(){
                                Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ProdutosScreen()),
+                            MaterialPageRoute(builder: (context) => const ProdutosScreen()),
                           );
                             } ,
-                            child: Text('Prosseguir'),
+                            child: const Text('Prosseguir'),
                           ),
                         ),
                       ],

@@ -43,10 +43,10 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(""),
+        title: const Text(""),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               BlocProvider.of<AuthBloc>(context).add(Logout());
             },
@@ -54,7 +54,7 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Colors.blueAccent,
@@ -68,7 +68,7 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 50.0),
+              margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 50.0),
               child: Row(
                 children: [
                   Expanded(
@@ -84,7 +84,7 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                     onPressed: () {
                       // Implemente a lógica de pesquisa aqui
                     },
@@ -93,14 +93,14 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
               ),
             ),
             GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 5.0,
                 mainAxisSpacing: 5.0,
               ),
               itemCount: 3,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(5.0),
@@ -119,10 +119,10 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                           color: Colors.blue,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         genreDescriptions[index],
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ],
                   ),
@@ -131,7 +131,7 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
             ),
             Expanded(
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 5.0,
                   mainAxisSpacing: 5.0,
@@ -142,7 +142,7 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: Container(
+                        child: SizedBox(
                           width: 120,
                           height: 120,
                           child: Image.asset(
@@ -151,15 +151,15 @@ class _ProdutosScreenState extends State<ProdutosScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       ElevatedButton.icon(
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => CarrinhoScreen()),
+                            MaterialPageRoute(builder: (context) => const CarrinhoScreen()),
                           );
                         },
-                        icon: Icon(Icons.shopping_cart),
+                        icon: const Icon(Icons.shopping_cart),
                         label: Text('R\$ ${productValues[index]}'),
                       ),
                     ],

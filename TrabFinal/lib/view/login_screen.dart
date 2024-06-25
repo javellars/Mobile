@@ -46,10 +46,10 @@ class _LoginScreenState extends State<LoginScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(""),
+        title: const Text(""),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Colors.blue,
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: BoxDecoration(
                           color: Colors.orangeAccent,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 25.0,
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         child: Container(
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           child: Form(
                             key: _formKey,
                             child: Column(
@@ -97,9 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 TextFormField(
                                   controller: _emailController,
                                   keyboardType: TextInputType.text,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 20),
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: "Login do Usuário",
                                     labelStyle:
                                         TextStyle(color: Colors.blueAccent),
@@ -111,14 +111,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     return null;
                                   },
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 TextFormField(
                                   controller: _senhaController,
                                   obscureText: true,
                                   keyboardType: TextInputType.text,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 20),
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: "Senha do usuário",
                                     labelStyle:
                                         TextStyle(color: Colors.blueAccent),
@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     return null;
                                   },
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 ElevatedButton(
                                   onPressed: _isLoginButtonEnabled
                                       ? () {
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               context: context,
                                               builder: (BuildContext context) {
                                                 return AlertDialog(
-                                                  title: Text(
+                                                  title: const Text(
                                                       'Login efetuado com sucesso'),
                                                   actions: <Widget>[
                                                     TextButton(
@@ -156,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                         Navigator.of(context)
                                                             .pop();
                                                       },
-                                                      child: Text('OK'),
+                                                      child: const Text('OK'),
                                                     ),
                                                   ],
                                                 );
@@ -165,14 +165,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                           }
                                         }
                                       : null,
-                                  child: Text(
-                                    "Entrar",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
                                   style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all(
                                             Colors.lightBlue),
+                                  ),
+                                  child: const Text(
+                                    "Entrar",
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ],
@@ -197,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white60,
                           borderRadius: BorderRadius.circular(80),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               blurRadius: 25.0,
@@ -208,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Image(
                           height: MediaQuery.of(context).size.height / 5,
                           width: MediaQuery.of(context).size.height / 5,
-                          image: AssetImage('lib/assets/perfil_icon.png'),
+                          image: const AssetImage('lib/assets/perfil_icon.png'),
                           fit: BoxFit.cover,
                         ),
                       ),

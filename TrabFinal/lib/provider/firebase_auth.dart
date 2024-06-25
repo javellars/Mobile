@@ -14,7 +14,7 @@ class FirebaseAuthenticationService {
   }
 
   String? _userFromFirebaseUser(User? user) {
-    return user != null ? user.uid : null;
+    return user?.uid;
   }
 
   Future<String?> signInAnonimo() async {

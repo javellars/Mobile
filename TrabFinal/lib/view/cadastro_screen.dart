@@ -153,14 +153,14 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                 const Divider(),
                                 ElevatedButton(
                                   onPressed: buttonCadastroClicado,
-                                  child: const Text(
-                                    "Cadastrar",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
                                   style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all(
                                             Colors.lightBlue),
+                                  ),
+                                  child: const Text(
+                                    "Cadastrar",
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ],
@@ -229,7 +229,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
         );
 
         BlocProvider.of<ProfileBloc>(context).add(SubmitEvent(nome: cadastro));
-        print("Formulário válido!");
+        debugPrint("Formulário válido!");
         // Exibe o dialog de sucesso
         showDialog(
           context: context,
@@ -255,7 +255,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
         );
       } catch (e) {
         // Captura e exibe o erro
-        print("Erro ao cadastrar usuário: $e");
+        debugPrint("Erro ao cadastrar usuário: $e");
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -275,7 +275,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
         );
       }
     } else {
-      print("Formulário inválido!");
+      debugPrint("Formulário inválido!");
     }
   }
 
