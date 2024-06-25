@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:entrega1_livraria/view/login_screen.dart';
 import '../bloc/profiler_bloc.dart';
 import '../model/cadastro.dart';
@@ -215,25 +215,27 @@ class _CadastroScreenState extends State<CadastroScreen> {
   void buttonCadastroClicado() async {
     if (_formKey.currentState!.validate()) {
       try {
-        /* UserCredential userCredential = await FirebaseAuth.instance
+        UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: _emailController.text,
-                password: _senhaController.text); */
-
+                password: _senhaController.text);
+        
         // Cadastro realizado com sucesso
         Cad cadastro = Cad.withData(
           nome: _nomeController.text,
           email: _emailController.text,
           senha: _senhaController.text,
-          //cadId: userCredential.user!.uid,
+          cadId: userCredential.user!.uid,
         );
+        
+        if (!mounted ) return;
 
-        BlocProvider.of<ProfileBloc>(context).add(SubmitEvent(nome: cadastro));
+        BlocProvider.of<ProfileBloc>( context ).add(SubmitEvent(nome: cadastro));
         debugPrint("Formulário válido!");
         // Exibe o dialog de sucesso
         showDialog(
           context: context,
-          builder: (BuildContext context) {
+          builder: ( BuildContext context ) {
             return AlertDialog(
               title: const Text("Sucesso"),
               content: const Text("Cadastro efetuado com sucesso"),
@@ -256,6 +258,8 @@ class _CadastroScreenState extends State<CadastroScreen> {
       } catch (e) {
         // Captura e exibe o erro
         debugPrint("Erro ao cadastrar usuário: $e");
+        if (!mounted ) return;
+
         showDialog(
           context: context,
           builder: (BuildContext context) {

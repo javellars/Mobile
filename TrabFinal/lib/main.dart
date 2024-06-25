@@ -1,3 +1,4 @@
+import 'package:entrega1_livraria/bloc/profiler_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         ),
         home: MultiBlocProvider(providers: [
           BlocProvider(create: (context) => AuthBloc()),
+          BlocProvider(create: (context) => ProfileBloc()),
         ], child: const Wrapper2()));
   }
 }

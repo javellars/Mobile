@@ -12,7 +12,7 @@ class Cad {
   });
 
   // Construtor com parâmetros nomeados
-  Cad.withData({this.nome = "", this.email = "", this.senha = ""});
+  Cad.withData({this.nome = "", this.email = "", this.senha = "", this.cadId = ""});
 
   Cad.fromMap(Map<String, dynamic> map) {
     nome = map['nome'];
