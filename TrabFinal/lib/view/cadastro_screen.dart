@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:entrega1_livraria/view/login_screen.dart';
 import '../bloc/profiler_bloc.dart';
 import '../model/cadastro.dart';
@@ -215,10 +215,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
   void buttonCadastroClicado() async {
     if (_formKey.currentState!.validate()) {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
+        /* UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: _emailController.text,
-                password: _senhaController.text);
+                password: _senhaController.text); */
 
         // Cadastro realizado com sucesso
         Cad cadastro = Cad.withData(
@@ -243,7 +243,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LoginScreen(),
+                        builder: (context) => const LoginScreen(),
                       ),
                     );
                   },
