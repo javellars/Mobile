@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../model/cadastro.dart';
 import 'package:dio/dio.dart';
 
@@ -51,5 +53,22 @@ class CadProvider {
       CadCollection.add(cad);
     });
     return CadCollection;
+  }
+   Future<String?> getNameUserAuthenticated() async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    // Loop enquanto o usuário for nulo
+    while (user == null) {
+      await Future.delayed(Duration(
+          seconds: 1)); // Espera 1 segundo antes de verificar novamente
+      user = FirebaseAuth.instance.currentUser;
+    }
+
+    // Quando o usuário não for mais nulo, obtemos o nome
+    String uid = user.uid;
+    String localUrl = prefixUrl + uid + "/" + suffixUrl;
+    Response response = await _dio.get(localUrl);
+    Cad userProfile = Cad.fromMap(response.data);
+    return userProfile.nome;
   }
 }

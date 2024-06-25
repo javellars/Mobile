@@ -8,7 +8,7 @@ class Cad {
     this.nome = "",
     this.email = "",
     this.senha = "",
-    this.cadId,
+    this.cadId = "",
   });
 
   // Construtor com parâmetros nomeados
