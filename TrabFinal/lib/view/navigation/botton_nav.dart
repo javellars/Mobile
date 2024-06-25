@@ -1,4 +1,4 @@
-import 'package:entrega1_livraria/view/pagamento_screen.dart';
+// import 'package:entrega1_livraria/view/pagamento_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../carrinho.dart';
@@ -15,11 +15,11 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _currentScreen = 0;
 
-  final List<Widget> _telas = [
-    ProdutosScreen(),
-    CarrinhoScreen(),
-    InicioScreen(),
-  ];
+  /*final List<Widget> _telas = [
+    const ProdutosScreen(),
+    const CarrinhoScreen(),
+    const InicioScreen(),
+  ];*/
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +27,15 @@ class _BottomNavState extends State<BottomNav> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(""),
+        title: const Text(""),
       ),
-      body: IndexedStack(index: _currentScreen, children: [
+      body: IndexedStack(index: _currentScreen, children: const [
         ProdutosScreen(),
         CarrinhoScreen(),
         InicioScreen(),
       ]),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.book_sharp),
             label: 'Produtos',
