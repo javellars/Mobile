@@ -15,11 +15,11 @@ class CarrinhoScreen extends StatefulWidget {
 class _CarrinhoScreenState extends State<CarrinhoScreen> {
   @override
   Widget build(BuildContext context) {
-    final EdgeInsetsGeometry buttonPadding = const EdgeInsets.symmetric(vertical: 10);
-    final Size buttonSize = const Size(145, 50);
-    final Color buttonBackgroundColor = Colors.orangeAccent;
-    final Color buttonForegroundColor = Colors.blueAccent;
-    final Color containerBackgroundColor = Colors.white54;
+    const EdgeInsetsGeometry buttonPadding = EdgeInsets.symmetric(vertical: 10);
+    const Size buttonSize = Size(145, 50);
+    const Color buttonBackgroundColor = Colors.orangeAccent;
+    const Color buttonForegroundColor = Colors.blueAccent;
+    const Color containerBackgroundColor = Colors.white54;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -100,7 +100,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                               onPressed:(){
                                  Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ProdutosScreen()),
+                            MaterialPageRoute(builder: (context) => const ProdutosScreen()),
                           );
                               },
                               child: const Text('Continuar Comprando'),
@@ -115,7 +115,7 @@ class _CarrinhoScreenState extends State<CarrinhoScreen> {
                               onPressed:(){
                                  Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => PagamentoScreen()),
+                            MaterialPageRoute(builder: (context) => const PagamentoScreen()),
                           );
                               },
                               child: const Text('Finalizar Compra'),

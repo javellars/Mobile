@@ -148,8 +148,8 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RadioListTile<String>(
-                        title: Row(
-                          children: const [
+                        title: const Row(
+                          children: [
                             Icon(Icons.payment),
                             SizedBox(width: 8),
                             Text("Pix"),
@@ -164,8 +164,8 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                         },
                       ),
                       RadioListTile<String>(
-                        title: Row(
-                          children: const [
+                        title: const Row(
+                          children: [
                             Icon(Icons.credit_card),
                             SizedBox(width: 8),
                             Text("Crédito"),
@@ -188,7 +188,7 @@ class _PagamentoScreenState extends State<PagamentoScreen> {
                     onPressed:(){
                        Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ConfirmacaoPagamentoScreen()
+                            MaterialPageRoute(builder: (context) => const ConfirmacaoPagamentoScreen()
                             ),
                           );
                     } ,

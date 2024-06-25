@@ -59,7 +59,7 @@ Widget authenticatedWidget(BuildContext context) {
                 Tab(icon: Icon(Icons.ac_unit))
               ],
             )),
-        body: Text("voce esta autenticado!")),
+        body: const Text("voce esta autenticado!")),
   );
 }
 

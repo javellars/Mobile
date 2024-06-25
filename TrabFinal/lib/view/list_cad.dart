@@ -13,10 +13,10 @@ class CadListScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(""),
+        title: const Text(""),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Colors.blue,
@@ -41,7 +41,7 @@ class CadListScreen extends StatelessWidget {
                     BlocProvider.of<ProfileBloc>(context)
                         .add(GetCadListEvent());
                   },
-                  child: Text("Refresh"),
+                  child: const Text("Refresh"),
                 ),
               ],
             );
@@ -56,7 +56,7 @@ class CadListScreen extends StatelessWidget {
     return ListView.builder(
       itemCount: cadList.length,
       itemBuilder: (context, position) => ListTile(
-        leading: Icon(Icons.person),
+        leading: const Icon(Icons.person),
         trailing: GestureDetector(
           onTap: () {
             // Adicione o evento para deletar o cadastro

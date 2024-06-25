@@ -15,13 +15,13 @@ class InicioScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(""),
+        title: const Text(""),
       ),
       body: Stack(
         children: [
           // Gradiente de fundo
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
                   Colors.blue,
@@ -61,7 +61,7 @@ class InicioScreen extends StatelessWidget {
                         ),
                         const SizedBox(
                             height: 5), // Espaço entre a imagem e o texto
-                        Text(
+                        const Text(
                           "Libre Livros",
                           style: TextStyle(
                             color: Colors.black,
@@ -83,13 +83,13 @@ class InicioScreen extends StatelessWidget {
                           onPressed:(){
                             Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => CadastroScreen()),
+                            MaterialPageRoute(builder: (context) => const CadastroScreen()),
                           );
                           },
                           backgroundColor: Colors.transparent,
                           // Remover cor de fundo
                           elevation: 0,
-                          child: Icon(
+                          child: const Icon(
                             Icons.note_add,
                             size: 40,
                             color: Colors.orangeAccent,
@@ -97,7 +97,7 @@ class InicioScreen extends StatelessWidget {
                         ),
                         const SizedBox(
                             height: 15), // Espaço entre o ícone e o texto
-                        Text(
+                        const Text(
                           'Cadastre-se',
                           style: TextStyle(
                             color: Colors.black,
@@ -105,21 +105,21 @@ class InicioScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(width: 50), // Espaço entre os ícones
+                    const SizedBox(width: 50), // Espaço entre os ícones
                     Column(
                       children: [
                         FloatingActionButton(
                           onPressed: (){
                             Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => LoginScreen()),
+                            MaterialPageRoute(builder: (context) => const LoginScreen()),
                           );
                           },
                           backgroundColor: Colors.transparent,
                           //tira cor do botão
                           elevation: 0,
                           //tira o sombreamento
-                          child: Icon(
+                          child: const Icon(
                             Icons.login,
                             size: 40,
                             color: Colors.orangeAccent,
@@ -127,7 +127,7 @@ class InicioScreen extends StatelessWidget {
                         ),
                         const SizedBox(
                             height: 15), // Espaço entre o ícone e o texto
-                        Text(
+                        const Text(
                           'Login',
                           style: TextStyle(color: Colors.black),
                         ),

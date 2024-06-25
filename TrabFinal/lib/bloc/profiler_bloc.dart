@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:entrega1_livraria/provider/cad_provider.dart'; // Importe o CadProvider aqui
-
 import '../model/cadastro.dart';
-import '../view/list_cad.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(InsertState(cadList: [])) {
