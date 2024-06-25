@@ -1,15 +1,12 @@
-import 'package:entrega1_livraria/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:entrega1_livraria/view/wrapper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:entrega1_livraria/view/login_screen.dart';
 import '../bloc/profiler_bloc.dart';
 import '../model/cadastro.dart';
 
 class CadastroScreen extends StatefulWidget {
-  
-  const CadastroScreen({
-    Key? key,
-  }) : super(key: key);
+  const CadastroScreen({Key? key}) : super(key: key);
 
   @override
   State<CadastroScreen> createState() => _CadastroScreenState();
@@ -87,7 +84,9 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                   controller: _nomeController,
                                   keyboardType: TextInputType.text,
                                   style: const TextStyle(
-                                      color: Colors.white, fontSize: 20),
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
                                   decoration: const InputDecoration(
                                     labelText: "Adicione seu nome",
                                     labelStyle:
@@ -95,10 +94,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                   ),
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "insira seu nome";
+                                      return "Insira seu nome";
                                     }
                                     if (value.length < 3) {
-                                      return "o nome é inválido";
+                                      return "Nome inválido";
                                     }
                                     return null;
                                   },
@@ -108,7 +107,9 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                   controller: _emailController,
                                   keyboardType: TextInputType.emailAddress,
                                   style: const TextStyle(
-                                      color: Colors.white, fontSize: 20),
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
                                   decoration: const InputDecoration(
                                     labelText: "Adicione seu e-mail",
                                     labelStyle:
@@ -116,11 +117,11 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                   ),
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "insira um email";
+                                      return "Insira um e-mail";
                                     }
                                     if (value.length < 10 ||
                                         !value.contains("@")) {
-                                      return "o email é inválido";
+                                      return "E-mail inválido";
                                     }
                                     return null;
                                   },
@@ -131,7 +132,9 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                   obscureText: true,
                                   keyboardType: TextInputType.text,
                                   style: const TextStyle(
-                                      color: Colors.white, fontSize: 20),
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
                                   decoration: const InputDecoration(
                                     labelText: "Senha do usuário",
                                     labelStyle:
@@ -139,10 +142,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                   ),
                                   validator: (String? value) {
                                     if (value == null || value.isEmpty) {
-                                      return "insira uma senha";
+                                      return "Insira uma senha";
                                     }
                                     if (value.length < 6) {
-                                      return "Insira uma senha com mais caracteres";
+                                      return "Senha deve ter no mínimo 6 caracteres";
                                     }
                                     return null;
                                   },
@@ -155,8 +158,9 @@ class _CadastroScreenState extends State<CadastroScreen> {
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.lightBlue),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(
+                                            Colors.lightBlue),
                                   ),
                                 ),
                               ],
@@ -192,7 +196,8 @@ class _CadastroScreenState extends State<CadastroScreen> {
                         child: Image(
                           height: MediaQuery.of(context).size.height / 5,
                           width: MediaQuery.of(context).size.height / 5,
-                          image: const AssetImage('lib/assets/perfil_icon.png'),
+                          image: const AssetImage(
+                              'lib/assets/perfil_icon.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -207,45 +212,78 @@ class _CadastroScreenState extends State<CadastroScreen> {
     );
   }
 
-  void buttonCadastroClicado() {
+  void buttonCadastroClicado() async {
     if (_formKey.currentState!.validate()) {
-      Cad nome = Cad.withData(
-        nome: _nomeController.text,
-        email: _emailController.text,
-        senha: _senhaController.text,
-      );
-      BlocProvider.of<ProfileBloc>(context).add(SubmitEvent(nome: nome));
-      print("Formulário válido!");
-      // Exibe o dialog
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text("Sucesso"),
-            content: const Text("Cadastro efetuado com sucesso"),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  /*Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => LoginScreen()),
-                          ); */
-                          /*Navigator.pop(context);
-                          Navigator.pop(context); // Navega para a tela de login*/
-                  
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: _emailController.text,
+                password: _senhaController.text);
 
-                },
-                child: const Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
-      // Pega os dados
-      print(
-          "${_emailController.text}, ${_nomeController.text}, ${_senhaController.text}");
+        // Cadastro realizado com sucesso
+        Cad cadastro = Cad.withData(
+          nome: _nomeController.text,
+          email: _emailController.text,
+          senha: _senhaController.text,
+          //cadId: userCredential.user!.uid,
+        );
+
+        BlocProvider.of<ProfileBloc>(context).add(SubmitEvent(nome: cadastro));
+        print("Formulário válido!");
+        // Exibe o dialog de sucesso
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text("Sucesso"),
+              content: const Text("Cadastro efetuado com sucesso"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ),
+                    );
+                  },
+                  child: const Text("OK"),
+                ),
+              ],
+            );
+          },
+        );
+      } catch (e) {
+        // Captura e exibe o erro
+        print("Erro ao cadastrar usuário: $e");
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text("Erro"),
+              content: Text("Erro ao cadastrar usuário: $e"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context); // Fecha o AlertDialog
+                  },
+                  child: const Text("OK"),
+                ),
+              ],
+            );
+          },
+        );
+      }
     } else {
       print("Formulário inválido!");
     }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _nomeController.dispose();
+    _senhaController.dispose();
+    super.dispose();
   }
 }
